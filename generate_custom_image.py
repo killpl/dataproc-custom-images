@@ -113,9 +113,12 @@ def get_dataproc_base_image(version):
              "cloud-dataproc", filter_arg,
              "--format=csv[no-heading=true](name,status)"]
 
+  print command
+
   # get stdout from compute images list --filters
   with tempfile.NamedTemporaryFile() as temp_file:
-    pipe = subprocess.Popen(command, stdout=temp_file)
+    print temp_file
+    pipe = subprocess.Popen(command, stdout=temp_file) 
     pipe.wait()
     if pipe.returncode != 0:
       raise RuntimeError(
@@ -351,9 +354,9 @@ def perform_sanity_checks(args):
         args.daisy_path))
 
   # Customization script
-  if not os.path.isfile(args.customization_script):
-    raise Exception("Invalid path to customization script: '{}' is not a file.".format(
-        args.customization_script))
+  #if not os.path.isfile(args.customization_script):
+  #  raise Exception("Invalid path to customization script: '{}' is not a file.".format(
+  #      args.customization_script))
 
   # Check the image doesn't already exist.
   command = "gcloud compute images describe {} --project={}".format(

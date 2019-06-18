@@ -55,8 +55,13 @@ function exit_handler() {{
 
 function main() {{
   echo 'Uploading files to GCS bucket.'
-  gsutil cp \
+  
+  gsutil cp -r \
       {customization_script} \
+      gs://{bucket_name}/{run_id}/sources/{customization_script}
+
+  gsutil cp \
+      {customization_script}/build.sh \
       gs://{bucket_name}/{run_id}/sources/init_actions.sh
   gsutil cp startup_script/run.sh gs://{bucket_name}/{run_id}/sources/
 
