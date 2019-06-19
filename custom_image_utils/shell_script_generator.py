@@ -58,7 +58,7 @@ function main() {{
   
   gsutil cp -r \
       {customization_script} \
-      gs://{bucket_name}/{run_id}/sources/{customization_script}
+      gs://{bucket_name}/{run_id}/sources/
 
   gsutil cp \
       {customization_script}/build.sh \
