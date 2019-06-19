@@ -61,7 +61,7 @@ function main() {{
       gs://{bucket_name}/{run_id}/sources/
 
   gsutil cp \
-      ./build.sh \
+      ../build.sh \
       gs://{bucket_name}/{run_id}/sources/init_actions.sh
   gsutil cp startup_script/run.sh gs://{bucket_name}/{run_id}/sources/
 
